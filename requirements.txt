@@ -1,0 +1,6 @@
+google-generativeai
+google-genai
+pandas
+streamlit
+python-dotenv
+plotly

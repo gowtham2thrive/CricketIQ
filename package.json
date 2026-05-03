@@ -1,0 +1,14 @@
+{
+  "name": "cricketiq",
+  "version": "1.0.0",
+  "description": "CricketIQ — AI-Powered IPL Analytics powered by Gemini and Streamlit",
+  "scripts": {
+    "start": "python -m streamlit run app.py",
+    "dev": "python -m streamlit run app.py",
+    "test-data": "python data_test.py",
+    "export": "python export_data.py",
+    "backup": "python backup_demo.py"
+  },
+  "author": "",
+  "license": "ISC"
+}
