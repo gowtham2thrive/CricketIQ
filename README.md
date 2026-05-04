@@ -274,8 +274,6 @@ gcloud run services update cricketiq --update-env-vars GEMINI_API_KEY=your_key
 
 <div align="center">
 
-**CricketIQ was recognized at a competitive hackathon for its innovative use of AI in sports analytics.**
-
 <a href="docs/hackathon-certificate.pdf">
   <img src="https://img.shields.io/badge/🏅_Hackathon-Certificate_Winner-gold?style=for-the-badge" alt="Hackathon Certificate"/>
 </a>
@@ -335,31 +333,3 @@ gcloud run services update cricketiq --update-env-vars GEMINI_API_KEY=your_key
 > All-time top 10 run scorers, most successful teams, and season-wise match count trends with interactive Plotly charts.
 
 </details>
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-
-**Built with ❤️ by [Gowtham Kondapalli](https://github.com/gowtham2thrive)**
-
-🏏 *CricketIQ — Where Data Meets Cricket Intelligence* 🏏
-
-</div>
