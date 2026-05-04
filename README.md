@@ -19,7 +19,7 @@ CricketIQ is a production-grade, AI-driven dashboard that delivers instant stati
 
 ---
 
-## 🏅 Hackathon Achievement — IIT Nuzvid
+## 🏅 Hackathon Participation — IIT Nuzvid
 
 <p align="center">
   <img src="https://github.com/gowtham2thrive/CricketIQ/blob/main/docs/hackathon-certificate-cricketiq-2026.png" 
@@ -28,11 +28,8 @@ CricketIQ is a production-grade, AI-driven dashboard that delivers instant stati
 </p>
 
 <div align="center">
-
+  
 **🎓 Participated in Hackathon at IIT Nuzvid**
-
-*CricketIQ was recognized for its innovative use of AI in sports analytics.*
-
 </div>
 
 ---
