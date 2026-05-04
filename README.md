@@ -184,9 +184,10 @@ CricketIQ/
 │
 ├── docs/                         # ── Documentation ──
 │   ├── screenshots/              # Dashboard screenshots
-│   └── hackathon-certificate.pdf
+│   └── hackathon-certificate-cricketiq-2026.png
 │
 ├── Dockerfile                    # Container configuration
+├── package.json                  # NPM scripts for running commands
 ├── requirements.txt              # Python dependencies
 ├── .env.example                  # Environment variable template
 ├── .gitignore
