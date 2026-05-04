@@ -19,19 +19,20 @@ CricketIQ is a production-grade, AI-driven dashboard that delivers instant stati
 
 ---
 
-## 📸 Screenshots
+## 🏅 Hackathon Achievement — IIT Nuzvid
+
+<p align="center">
+  <img src="https://github.com/gowtham2thrive/CricketIQ/blob/main/docs/hackathon-certificate-cricketiq-2026.png" 
+       alt="hackathon-certificate-cricketiq-2026"
+       width="600">
+</p>
 
 <div align="center">
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/ai-chat.png" alt="AI Chat Dashboard"/><br/><sub><b>🤖 AI Chat — Natural Language Queries</b></sub></td>
-<td width="50%"><img src="docs/screenshots/match-prediction.png" alt="Match Prediction"/><br/><sub><b>🔮 Smart Match Insights</b></sub></td>
-</tr>
-<tr>
-<td width="50%"><img src="docs/screenshots/player-stats.png" alt="Player Stats"/><br/><sub><b>🏏 Player Analytics Dashboard</b></sub></td>
-<td width="50%"><img src="docs/screenshots/leaderboards.png" alt="Leaderboards"/><br/><sub><b>🏆 All-Time Leaderboards</b></sub></td>
-</tr>
-</table>
+
+**🎓 Participated in Hackathon at IIT Nuzvid**
+
+*CricketIQ was recognized for its innovative use of AI in sports analytics.*
+
 </div>
 
 ---
@@ -267,20 +268,6 @@ gcloud run services update cricketiq --update-env-vars GEMINI_API_KEY=your_key
 - [ ] Head-to-head player comparison visualizations
 - [ ] Venue-based performance analytics
 - [ ] Full-stack architecture (React + FastAPI)
-
----
-
-## 🏅 Hackathon Achievement
-
-<div align="center">
-
-<a href="docs/hackathon-certificate.pdf">
-  <img src="https://img.shields.io/badge/🏅_Hackathon-Certificate_Winner-gold?style=for-the-badge" alt="Hackathon Certificate"/>
-</a>
-
-📄 **[View Certificate (PDF)](docs/hackathon-certificate.pdf)**
-
-</div>
 
 ---
 
