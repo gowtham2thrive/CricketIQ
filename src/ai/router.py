@@ -10,7 +10,7 @@ from difflib import get_close_matches
 from src.config import PLAYER_ALIASES, TEAM_ALIASES
 from src.analytics.batting import get_player_stats, compare_players
 from src.analytics.bowling import get_bowling_stats
-from src.analytics.team import get_team_wins
+from src.analytics.team import get_team_wins, get_top_teams
 from src.analytics.predictions import predict_match, get_top_scorers
 
 # Common English words that should NEVER fuzzy-match to player/team names
@@ -113,7 +113,7 @@ def route_intent(question: str, matches, deliveries, data_ok: bool):
     intent = None
 
     # Identify intent — use WORD-LEVEL matching to avoid "ashwin" matching "win"
-    if any(w in {"top", "highest", "most"} for w in q_words):
+    if any(w in {"top", "highest", "most", "best"} for w in q_words):
         intent = "top"
     elif any(w in {"vs", "versus", "predict", "compare"} for w in q_words):
         intent = "compare_or_team"
@@ -223,10 +223,15 @@ def route_intent(question: str, matches, deliveries, data_ok: bool):
                 st.session_state.last_intent = "batting"
                 return compare_players(matched_players[0], matched_players[1], deliveries), "High", None
 
-        # Top scorers
+        # Top queries — distinguish "top team" from "top scorer"
         if intent == "top":
-            st.session_state.last_intent = "top"
-            return get_top_scorers(deliveries), "High", None
+            team_words = {"team", "teams", "franchise", "franchises", "club", "clubs", "side", "sides"}
+            if any(w in team_words for w in q_words):
+                st.session_state.last_intent = "top_teams"
+                return get_top_teams(matches), "High", None
+            else:
+                st.session_state.last_intent = "top"
+                return get_top_scorers(deliveries), "High", None
 
         # Entity-based routing
         if entity:
