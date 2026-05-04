@@ -149,25 +149,34 @@ def route_intent(question: str, matches, deliveries, data_ok: bool):
                 if result and result not in matched_teams:
                     matched_teams.append(result)
         # 4. Fuzzy full team name word matching (e.g. "chenna" → "Chennai Super Kings")
+        #    Skip words that are known player aliases to avoid "kohli" → "kochi"
         if not matched_teams:
             for w in q_words:
+                if w in PLAYER_ALIASES or w in _STOPWORDS:
+                    continue
                 result = _fuzzy_match_team(w, list(teams_all))
                 if result and result not in matched_teams:
                     matched_teams.append(result)
 
         # ── Check for players (exact alias → fuzzy alias → substring → fuzzy name) ──
         matched_players = []
+        already_matched_words = set()
+
         # 1. Exact player alias
         for alias, full_name in PLAYER_ALIASES.items():
             if alias in q_words and full_name not in matched_players:
                 matched_players.append(full_name)
+                already_matched_words.add(alias)
 
         # 2. Fuzzy alias matching for misspelled names (kohili→kohli, donhi→dhoni)
-        if not matched_players:
-            for w in q_words:
-                result = _fuzzy_match_alias(w, PLAYER_ALIASES)
-                if result and result not in matched_players:
-                    matched_players.append(result)
+        #    Always runs for unmatched words so "kohli vs donhi" finds both players
+        for w in q_words:
+            if w in already_matched_words or w in _STOPWORDS or len(w) < 3:
+                continue
+            result = _fuzzy_match_alias(w, PLAYER_ALIASES)
+            if result and result not in matched_players:
+                matched_players.append(result)
+                already_matched_words.add(w)
 
         # 3. Substring matching against dataset names (only words 4+ chars)
         if not matched_players:

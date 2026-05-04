@@ -40,6 +40,8 @@ PLAYER_ALIASES = {
     "kohli": "V Kohli",
     "rohit": "RG Sharma",
     "dhoni": "MS Dhoni",
+    "msd": "MS Dhoni",
+    "msdhoni": "MS Dhoni",
     "bumrah": "JJ Bumrah",
     "sachin": "SR Tendulkar",
     "gayle": "CH Gayle",
