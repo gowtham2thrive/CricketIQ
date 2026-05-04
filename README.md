@@ -28,7 +28,8 @@ CricketIQ is a production-grade, AI-driven dashboard that delivers instant stati
 </p>
 
 <div align="center">
-** 🎓 Participated in Hackathon at IIT Nuzvid **
+  
+**🎓 Participated in Hackathon at IIT Nuzvid**
 </div>
 
 ---
