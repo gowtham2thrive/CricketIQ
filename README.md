@@ -1,118 +1,365 @@
+<div align="center">
+
 # 🏏 CricketIQ
 
-**"AI-Powered IPL Analytics Engine"**
+### AI-Powered IPL Intelligence Engine
 
-CricketIQ is an intelligent, data-driven dashboard that provides deep insights into historical IPL matches. Designed for cricket enthusiasts and analysts, it leverages advanced AI to deliver instant statistics, match predictions, and player performance metrics through an intuitive chat interface.
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Gemini](https://img.shields.io/badge/Google_Gemini-2.0_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
+[![License](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
+
+**Transform raw IPL data into actionable intelligence through AI-powered analytics.**
+
+CricketIQ is a production-grade, AI-driven dashboard that delivers instant statistics, match predictions, and player performance metrics across 12+ years of IPL history — all through an intuitive natural language chat interface powered by Google Gemini.
+
+[Getting Started](#-quick-start) · [Features](#-features) · [Architecture](#-architecture) · [Deployment](#-deployment)
+
+</div>
 
 ---
 
-## 🚀 Overview
+## 📸 Screenshots
 
-CricketIQ transforms raw IPL data into actionable intelligence. The platform features an AI chat assistant for natural language queries, a match prediction engine, a detailed player analytics dashboard, and comprehensive leaderboards. Whether you want to know the top run-scorers or the probability of a team winning, CricketIQ has you covered.
+<div align="center">
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/ai-chat.png" alt="AI Chat Dashboard"/><br/><sub><b>🤖 AI Chat — Natural Language Queries</b></sub></td>
+<td width="50%"><img src="docs/screenshots/match-prediction.png" alt="Match Prediction"/><br/><sub><b>🔮 Smart Match Insights</b></sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/player-stats.png" alt="Player Stats"/><br/><sub><b>🏏 Player Analytics Dashboard</b></sub></td>
+<td width="50%"><img src="docs/screenshots/leaderboards.png" alt="Leaderboards"/><br/><sub><b>🏆 All-Time Leaderboards</b></sub></td>
+</tr>
+</table>
+</div>
 
 ---
 
 ## ✨ Features
 
-* 🤖 **AI Chat:** Get instant IPL insights through natural language queries.
-* 📊 **Player Statistics:** View detailed metrics including runs, averages, and overall performance.
-* 🔮 **Match Prediction:** Predict outcomes based on historical win probabilities and matchups.
-* 🏆 **Leaderboards:** Discover top run-scorers, highest wicket-takers, and team win records.
-* ⚡ **Fast & Responsive:** Real-time answers using optimized queries and Streamlit caching.
-* 🎯 **Controlled AI:** Strict intent routing ensures accurate, deterministic, and hallucination-free answers.
+| Feature | Description |
+|---------|-------------|
+| 🤖 **AI Chat Assistant** | Ask questions in natural language — get instant, data-backed IPL insights powered by Google Gemini 2.0 Flash |
+| 🔮 **Match Predictions** | Historical win probability analysis with interactive head-to-head visualizations |
+| 🏏 **Player Analytics** | Deep-dive into batting averages, match-by-match performance, and dismissal breakdowns |
+| 🏆 **Leaderboards** | Top run scorers, most successful teams, and season-wise match trends |
+| 🎯 **Deterministic AI** | Rule-based intent routing ensures accurate, hallucination-free responses every time |
+| ⚡ **Blazing Fast** | Streamlit caching + optimized Pandas queries for sub-second response times |
+| 🎨 **Premium UI** | Glassmorphism design with micro-animations, responsive across all devices |
+
+---
+
+## 🏗 Architecture
+
+```
+┌──────────────────────────────────────────────────────────┐
+│                    STREAMLIT FRONTEND                     │
+│  ┌──────────┬──────────┬──────────┬──────────────────┐   │
+│  │ AI Chat  │ Predict  │ Player   │  Leaderboards    │   │
+│  │   Tab    │   Tab    │   Tab    │      Tab         │   │
+│  └────┬─────┴────┬─────┴────┬─────┴────────┬─────────┘   │
+│       │          │          │              │              │
+│  ┌────▼──────────▼──────────▼──────────────▼─────────┐   │
+│  │              ANALYTICS ENGINE                      │   │
+│  │  batting.py │ bowling.py │ team.py │ predictions.py│   │
+│  └────────────────────┬──────────────────────────────┘   │
+│                       │                                   │
+│  ┌────────────────────▼──────────────────────────────┐   │
+│  │    AI ENGINE (Intent Router + Gemini Formatter)    │   │
+│  └────────────────────┬──────────────────────────────┘   │
+│                       │                                   │
+│  ┌────────────────────▼──────────────────────────────┐   │
+│  │         DATA LAYER (Pandas + CSV Cache)            │   │
+│  │         matches.csv  │  deliveries.csv             │   │
+│  └───────────────────────────────────────────────────┘   │
+└──────────────────────────────────────────────────────────┘
+```
+
+**Query Pipeline:**
+
+```
+User Query → Intent Router → Entity Extraction → Analytics Function → Raw Data → Gemini Formatting → Response
+```
 
 ---
 
 ## 🛠 Tech Stack
 
-* **Python:** Core backend logic and data processing.
-* **Streamlit:** Fast, interactive frontend dashboard framework.
-* **Pandas:** Robust data manipulation and aggregation.
-* **Plotly:** Interactive and dynamic data visualization.
-* **Gemini API (Google GenAI):** Natural language processing and response formatting.
+| Technology | Purpose |
+|------------|---------|
+| **Python 3.10+** | Core backend logic and data processing |
+| **Streamlit** | Interactive frontend dashboard framework |
+| **Pandas** | High-performance data manipulation and aggregation |
+| **Plotly** | Interactive, dynamic data visualizations |
+| **Google Gemini 2.0 Flash** | Natural language processing and response formatting |
+| **Docker** | Containerization for cloud deployment |
+| **Google Cloud Run** | Serverless production hosting |
 
 ---
 
-## 🧠 How It Works
+## 🚀 Quick Start
 
-1. **Query Input:** The user asks a question via the chat interface.
-2. **Intent Detection:** The system analyzes the query to determine the intent (e.g., player stats, team stats, match prediction).
-3. **Function Trigger:** The appropriate backend function is triggered based on the detected intent.
-4. **Data Retrieval:** Precise data is fetched and aggregated from the historical IPL dataset.
-5. **AI Formatting:** The raw data is passed to Gemini, which formats it into a clean, professional response.
+### Prerequisites
 
----
+- Python 3.10 or higher
+- A [Google Gemini API key](https://aistudio.google.com/apikey)
 
-## 📂 Dataset
+### 1. Clone the repository
 
-* **Source:** Historical IPL dataset covering seasons from 2008 to 2019.
-* **Scope:** Includes ball-by-ball delivery data and comprehensive match-level metadata.
-* **Purpose:** Exclusively used for advanced analytics, insights, and historical probability models.
-
-> **Note:** Designed for consistent historical analysis and backtesting.
-
----
-
-## ⚙️ Setup & Installation
-
-**1. Clone the repository:**
 ```bash
 git clone https://github.com/gowtham2thrive/CricketIQ.git
-cd cricketiq
+cd CricketIQ
 ```
 
-**2. Install dependencies:**
+### 2. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-**3. Configure Environment Variables:**
-Create a `.env` file in the root directory and add your Gemini API key:
-```env
-GEMINI_API_KEY=your_api_key_here
-```
+### 3. Configure environment
 
-**4. Run the application:**
 ```bash
-streamlit run app.py
+cp .env.example .env
+```
+
+Edit `.env` and add your Gemini API key:
+
+```env
+GEMINI_API_KEY=your_actual_api_key_here
+```
+
+### 4. Run the application
+
+```bash
+streamlit run src/app.py
+```
+
+The dashboard will open at `http://localhost:8501`
+
+---
+
+## 📂 Project Structure
+
+```
+CricketIQ/
+│
+├── src/                          # ── Source Code ──
+│   ├── app.py                    # Main entry point (slim orchestrator)
+│   ├── config.py                 # Constants, team mappings, aliases
+│   ├── data_loader.py            # CSV loading & normalization
+│   ├── styles.py                 # Global CSS design system
+│   │
+│   ├── analytics/                # ── Analytics Engine ──
+│   │   ├── batting.py            # Player batting stats & comparisons
+│   │   ├── bowling.py            # Bowler stats & economy rates
+│   │   ├── team.py               # Team win rates & records
+│   │   └── predictions.py        # Match predictions & top scorers
+│   │
+│   ├── ai/                       # ── AI Engine ──
+│   │   └── router.py             # Intent detection & entity extraction
+│   │
+│   ├── ui/                       # ── UI Components ──
+│   │   ├── header.py             # Hero header & metric cards
+│   │   ├── chat_tab.py           # AI Chat interface
+│   │   ├── prediction_tab.py     # Match prediction dashboard
+│   │   ├── player_tab.py         # Player analytics dashboard
+│   │   └── leaderboard_tab.py    # Leaderboards & trends
+│   │
+│   └── agent.py                  # Standalone CLI agent
+│
+├── data/                         # ── Datasets ──
+│   ├── matches.csv               # Match-level data (2008–2020)
+│   └── deliveries.csv            # Ball-by-ball delivery data
+│
+├── tests/                        # ── Test Suite ──
+│   ├── test_api.py               # API connectivity test
+│   ├── test_data.py              # Data loading validation
+│   ├── test_router.py            # Intent router tests
+│   └── test_sdk.py               # SDK integration test
+│
+├── scripts/                      # ── DevOps & Utilities ──
+│   ├── deploy.ps1                # Cloud Run deployment script
+│   ├── export_data.py            # CSV export utility
+│   └── backup_demo.py            # Offline demo fallback
+│
+├── docs/                         # ── Documentation ──
+│   ├── screenshots/              # Dashboard screenshots
+│   └── hackathon-certificate.pdf
+│
+├── Dockerfile                    # Container configuration
+├── requirements.txt              # Python dependencies
+├── .env.example                  # Environment variable template
+├── .gitignore
+├── LICENSE                       # MIT License
+└── README.md
 ```
 
 ---
 
-## 🎮 Usage
+## 🎮 Usage Examples
 
-Here are some example queries you can ask the AI Assistant:
+Ask the AI Assistant natural language questions:
 
-* "Show Virat Kohli stats"
-* "Top run scorers"
-* "MI vs CSK prediction"
-* "Team win rate"
+| Query | What You Get |
+|-------|-------------|
+| `"Kohli stats"` | Complete batting statistics for V Kohli |
+| `"Top run scorers"` | Top 5 all-time IPL run scorers |
+| `"MI vs CSK"` | Head-to-head win probability analysis |
+| `"Bumrah bowling"` | Bowling stats with wickets and economy rate |
+| `"Compare Kohli and Dhoni"` | Side-by-side batting performance comparison |
+| `"RCB wins"` | Royal Challengers Bangalore win record |
 
 ---
 
-## 📁 Project Structure
+## 🐳 Deployment
 
-```text
-├── app.py              # Main Streamlit application
-├── matches.csv         # Match-level historical dataset
-├── deliveries.csv      # Ball-by-ball historical dataset
-├── requirements.txt    # Python dependencies
-└── .env                # Environment variables (API keys)
+### Docker (Local)
+
+```bash
+docker build -t cricketiq .
+docker run -p 8080:8080 -e GEMINI_API_KEY=your_key cricketiq
 ```
+
+### Google Cloud Run
+
+```powershell
+# Using the included deployment script
+.\scripts\deploy.ps1 -ApiKey "your_api_key"
+```
+
+Or manually:
+
+```bash
+gcloud run deploy cricketiq --source . --region asia-south1 --allow-unauthenticated
+gcloud run services update cricketiq --update-env-vars GEMINI_API_KEY=your_key
+```
+
+---
+
+## 📊 Dataset
+
+| Property | Details |
+|----------|---------|
+| **Source** | Historical IPL dataset |
+| **Coverage** | Seasons 2008 – 2020 |
+| **Matches** | 816 matches with full metadata |
+| **Deliveries** | 179,078 ball-by-ball records |
+| **Fields** | Teams, players, venues, scores, dismissals, extras |
+
+> **Note:** Team names are automatically normalized — e.g., "Delhi Daredevils" → "Delhi Capitals", "Kings XI Punjab" → "Punjab Kings".
 
 ---
 
 ## ⚠️ Limitations
 
-* **Historical Data Only:** Data is limited to the IPL 2008–2019 seasons.
-* **Prediction Scope:** Match predictions are strictly based on historical head-to-head statistics, not real-time conditions.
-* **No Live Updates:** The platform does not currently ingest real-time match data or live scores.
+- **Historical Data Only** — Coverage limited to IPL 2008–2020 seasons
+- **Probability-Based Predictions** — Based on historical win counts, not ML models
+- **No Live Data** — Does not ingest real-time scores or live match feeds
 
 ---
 
-## 🚧 Future Scope
+## 🚧 Roadmap
 
-* **Real-time IPL Data Integration:** Fetching live match scores and stats via external APIs.
-* **Advanced ML Models:** Transitioning from probability-based predictions to sophisticated machine learning models.
-* **Player Comparison Engine:** Side-by-side analytical comparisons of player stats.
-* **Full Web Application:** Scaling to a full-stack architecture (React frontend + REST API backend).
+- [ ] Real-time IPL data integration via live APIs
+- [ ] Advanced ML prediction models (XGBoost, Neural Networks)
+- [ ] Head-to-head player comparison visualizations
+- [ ] Venue-based performance analytics
+- [ ] Full-stack architecture (React + FastAPI)
+
+---
+
+## 🏅 Hackathon Achievement
+
+<div align="center">
+
+**CricketIQ was recognized at a competitive hackathon for its innovative use of AI in sports analytics.**
+
+<a href="docs/hackathon-certificate.pdf">
+  <img src="https://img.shields.io/badge/🏅_Hackathon-Certificate_Winner-gold?style=for-the-badge" alt="Hackathon Certificate"/>
+</a>
+
+📄 **[View Certificate (PDF)](docs/hackathon-certificate.pdf)**
+
+</div>
+
+---
+
+## 🖼️ UI Showcase
+
+<details>
+<summary><b>🤖 AI Chat Dashboard</b> — Click to expand</summary>
+<br/>
+<div align="center">
+<img src="docs/screenshots/ai-chat.png" alt="AI Chat Dashboard" width="90%"/>
+</div>
+<br/>
+
+> Natural language queries powered by Google Gemini 2.0 Flash with deterministic intent routing. Ask about any player, team, or IPL record and get instant, data-backed responses.
+
+</details>
+
+<details>
+<summary><b>🔮 Match Prediction Engine</b> — Click to expand</summary>
+<br/>
+<div align="center">
+<img src="docs/screenshots/match-prediction.png" alt="Match Prediction Dashboard" width="90%"/>
+</div>
+<br/>
+
+> Historical win probability analysis with interactive head-to-head bar charts, confidence scores, and visual progress indicators.
+
+</details>
+
+<details>
+<summary><b>🏏 Player Analytics</b> — Click to expand</summary>
+<br/>
+<div align="center">
+<img src="docs/screenshots/player-stats.png" alt="Player Stats Dashboard" width="90%"/>
+</div>
+<br/>
+
+> Deep-dive into individual player performance — match-by-match run trends, dismissal type breakdowns, and key metrics.
+
+</details>
+
+<details>
+<summary><b>🏆 Leaderboards</b> — Click to expand</summary>
+<br/>
+<div align="center">
+<img src="docs/screenshots/leaderboards.png" alt="Leaderboards Dashboard" width="90%"/>
+</div>
+<br/>
+
+> All-time top 10 run scorers, most successful teams, and season-wise match count trends with interactive Plotly charts.
+
+</details>
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**Built with ❤️ by [Gowtham Kondapalli](https://github.com/gowtham2thrive)**
+
+🏏 *CricketIQ — Where Data Meets Cricket Intelligence* 🏏
+
+</div>

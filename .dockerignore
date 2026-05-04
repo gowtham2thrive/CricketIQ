@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.git/
+tests/
+docs/
+scripts/
+node_modules/
+*.md
+.gitignore
+.dockerignore
+.env.example
