@@ -140,5 +140,5 @@ DATA:
                     # Append Smart Suggestions
                     final_text += "\n\n**Try asking:** Top scorers | Team wins | Player comparison"
 
-                    st.write(final_text)
-                    st.session_state.messages.append({"role": "assistant", "content": final_text})
+                st.write(final_text)
+                st.session_state.messages.append({"role": "assistant", "content": final_text})
